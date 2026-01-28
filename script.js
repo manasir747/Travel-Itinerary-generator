@@ -1,5 +1,5 @@
 const WEBHOOK_URL =
-  "https://manasir747.app.n8n.cloud/webhook-test/92cd20d7-c854-48da-b220-4d6e3236676a";
+  "https://manasir747.app.n8n.cloud/webhook/92cd20d7-c854-48da-b220-4d6e3236676a";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
