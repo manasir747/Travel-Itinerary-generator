@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Itinerary Generator (Frontend Only)</title>
+    <meta
+      name="description"
+      content="A frontend-only travel itinerary generator form with client-side validation and webhook submission."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="hero">
+          <div class="hero-copy reveal" data-reveal data-reveal-from="left">
+            <h1>Travel Itinerary Generator</h1>
+            <p class="subtitle">
+              Generate a personalized, day-by-day travel itinerary based on your
+              budget, duration, and preferences — delivered straight to your email.
+            </p>
+
+            <div class="hero-badges" aria-label="Highlights">
+              <span class="badge">AI-Generated Plans</span>
+              <span class="badge">Budget Aware</span>
+              <span class="badge">Email Delivery</span>
+            </div>
+          </div>
+
+          <div
+            class="hero-media reveal"
+            data-reveal
+            data-reveal-from="right"
+            aria-hidden="true"
+          >
+            <img
+              class="hero-img"
+              src="assets/svg/hero-travel.svg"
+              alt="Travel illustration"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section
+        class="card reveal"
+        data-reveal
+        data-reveal-from="left"
+        aria-labelledby="formTitle"
+      >
+        <h2 id="formTitle">Trip Details</h2>
+
+        <p class="subtitle small">
+          Fill in your trip details below. We’ll generate a personalized travel
+          plan and send it to your email via an automated workflow.
+        </p>
+
+        <form id="itineraryForm" novalidate>
+          <div class="grid">
+
+            <!-- Full Name -->
+            <div class="field floating">
+              <div class="control">
+                <input
+                  id="fullName"
+                  name="fullName"
+                  type="text"
+                  placeholder=" "
+                  autocomplete="name"
+                  required
+                />
+                <label for="fullName">Full name <span class="req">*</span></label>
+              </div>
+              <p class="help">Enter your full name as you’d like it on the itinerary.</p>
+              <p class="error" id="fullNameError" aria-live="polite"></p>
+            </div>
+
+            <!-- Destination -->
+            <div class="field floating">
+              <div class="control">
+                <input
+                  id="destination"
+                  name="destination"
+                  type="text"
+                  placeholder=" "
+                  autocomplete="off"
+                  required
+                />
+                <label for="destination">Destination <span class="req">*</span></label>
+              </div>
+              <p class="help">Enter a city, region, or country you want to visit.</p>
+              <p class="error" id="destinationError" aria-live="polite"></p>
+            </div>
+
+            <div class="field floating">
+              <div class="control">
+                <input id="days" name="days" type="number" min="1" step="1" placeholder=" " required />
+                <label for="days">Number of days <span class="req">*</span></label>
+              </div>
+              <p class="help">Must be a positive whole number.</p>
+              <p class="error" id="daysError" aria-live="polite"></p>
+            </div>
+
+            <div class="field floating">
+              <div class="control">
+                <input id="budget" name="budget" type="number" min="1" step="1" placeholder=" " required />
+                <label for="budget">Budget <span class="req">*</span></label>
+              </div>
+              <p class="help">Must be a positive number.</p>
+              <p class="error" id="budgetError" aria-live="polite"></p>
+            </div>
+
+            <div class="field floating">
+              <div class="control">
+                <select id="travelMode" name="travelMode" required>
+                  <option value="">Select</option>
+                  <option value="bus">Bus</option>
+                  <option value="train">Train</option>
+                  <option value="flight">Flight</option>
+                  <option value="car">Car</option>
+                </select>
+                <label for="travelMode">Mode of travel <span class="req">*</span></label>
+              </div>
+              <p class="help">Choose your primary travel mode.</p>
+              <p class="error" id="travelModeError" aria-live="polite"></p>
+            </div>
+
+            <div class="field floating">
+              <div class="control">
+                <input id="travelers" name="travelers" type="number" min="1" step="1" placeholder=" " required />
+                <label for="travelers">Number of travelers <span class="req">*</span></label>
+              </div>
+              <p class="help">Must be at least 1.</p>
+              <p class="error" id="travelersError" aria-live="polite"></p>
+            </div>
+
+            <div class="field floating">
+              <div class="control">
+                <input id="email" name="email" type="email" placeholder=" " autocomplete="email" required />
+                <label for="email">Email address <span class="req">*</span></label>
+              </div>
+              <p class="help">Your itinerary will be sent to this email.</p>
+              <p class="error" id="emailError" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="field floating">
+            <div class="control">
+              <textarea id="preferences" name="preferences" rows="4" placeholder=" "></textarea>
+              <label for="preferences">Additional preferences (optional)</label>
+            </div>
+            <p class="help">Food, activities, pace, special requests, etc.</p>
+            <p class="error" id="preferencesError" aria-live="polite"></p>
+          </div>
+
+          <div class="actions">
+            <button id="submitBtn" type="submit">Generate Itinerary</button>
+            <button id="resetBtn" type="reset" class="secondary">Reset</button>
+          </div>
+
+          <div class="status" id="statusBox" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+
+      <section class="card reveal" data-reveal data-reveal-from="right">
+        <h2>Destination Inspiration</h2>
+        <p class="subtitle small">
+          Explore different travel styles — your itinerary adapts to what you love.
+        </p>
+
+        <div class="gallery">
+          <figure class="gallery-item">
+            <img src="assets/svg/photo-beach.svg" alt="Beach destinations" />
+            <figcaption>Relaxing Beaches</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="assets/svg/photo-mountains.svg" alt="Mountain destinations" />
+            <figcaption>Mountain Getaways</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="assets/svg/photo-city.svg" alt="City destinations" />
+            <figcaption>City Exploration</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>
+          Travel Itinerary Generator • Built with HTML, CSS & JavaScript
+        </small>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

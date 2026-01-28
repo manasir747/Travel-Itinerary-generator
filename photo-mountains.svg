@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-label="Mountain photo illustration">
+  <defs>
+    <linearGradient id="mSky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#eef2ff"/>
+      <stop offset="1" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="mHill" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#a7f3d0"/>
+      <stop offset="1" stop-color="#16a34a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#mSky)"/>
+
+  <!-- clouds -->
+  <g opacity="0.8" fill="#ffffff">
+    <ellipse cx="170" cy="140" rx="70" ry="40"/>
+    <ellipse cx="230" cy="140" rx="70" ry="40"/>
+    <ellipse cx="200" cy="120" rx="70" ry="40"/>
+
+    <ellipse cx="650" cy="150" rx="70" ry="40"/>
+    <ellipse cx="710" cy="150" rx="70" ry="40"/>
+    <ellipse cx="680" cy="130" rx="70" ry="40"/>
+  </g>
+
+  <!-- mountains -->
+  <path d="M0 410 L210 190 L380 340 L520 170 L690 360 L900 410 L900 600 L0 600 Z" fill="#a5b4fc" opacity="0.9"/>
+  <path d="M160 410 L320 260 L420 350 L560 230 L710 410 L710 600 L160 600 Z" fill="#818cf8" opacity="0.95"/>
+
+  <!-- snow caps -->
+  <path d="M202 205 L210 190 L220 208 L235 190 L250 212 L210 240 Z" fill="#ffffff" opacity="0.95"/>
+  <path d="M510 185 L520 170 L532 186 L548 170 L565 196 L520 225 Z" fill="#ffffff" opacity="0.95"/>
+
+  <!-- foreground hills -->
+  <path d="M0 460 C160 420 320 500 470 465 C640 425 760 510 900 470 L900 600 L0 600 Z" fill="url(#mHill)" opacity="0.95"/>
+</svg>
+
